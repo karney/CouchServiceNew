@@ -14,46 +14,40 @@
 
     <script src="scripts/login.js" type="text/javascript"></script>
     <script src="scripts/location.js" type="text/javascript"></script>
+
+    
+    
+    
+    
+    
+    
+    <script src="scripts/ko.js"></script>
+    <script src="scripts/koMap.js"></script>
+    <script src="scripts/Global_variables.js"></script>
+    <script src="scripts/Sync.js"></script>
+    <script src="scripts/jlinq.js"></script>
+    <script src="scripts/models.js"></script>
+    <script src="scripts/AllPages.js"></script>
+    <script src="scripts/jquery-tmpl.js"></script>    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" media="only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio:2)" href="styles/phone-480.css" type="text/css" />
+    <link rel="stylesheet" media="only screen and (min-device-width: 320px) and (max-device-width: 508px) and (-webkit-device-pixel-ratio:1.5)" href="styles/phone-800.css" type="text/css" />
+    <link rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio:1)" href="styles/tablet-1024-ldpi.css" type="text/css" />
+    <link rel="stylesheet" media="only screen and (min-device-width: 720px) and (max-device-width: 1280px) and (-webkit-device-pixel-ratio:2)" href="styles/phone-1280.css" type="text/css" />
+	
+        
+    
+    
+    
+    
 </head>
 <body>
-
-    <!--Home-->
-    <div id="page-home" data-role="page">
-
-        <!--Header-->
-        <div data-role="header" data-position="fixed">
-            <h1>Home!</h1>
-        </div>
-
-        <!--Content-->
-        <div data-role="content">
-            <h1>Welcome to Telerik AppBuilder!</h1>
-            <p>
-                Telerik AppBuilder&trade; enables you to build cross-platform device applications regardless of your
-                    development platform by combining the convenience of a local development toolset with the
-                    power and flexibility of the cloud.
-            </p>
-        </div>
-        <div class="nav">
-            <ul data-role="listview">
-                <li>
-                    <a href="#page-ui-interaction" data-transition="slide">UI Interaction Example</a>
-                </li>
-                <li>
-                    <a href="#page-location" data-transition="slide">Location Example</a>
-                </li>
-            </ul>
-        </div>
-
-        <!--Footer-->
-        <div data-role="footer" data-position="fixed" data-id="oneFooter">
-            <span class="footerText">Built with Telerik AppBuilder&trade;</span>
-        </div>
-
-    </div>
-
-    <!--UI interaction-->
-    <div id="page-ui-interaction" data-role="page" data-add-back-btn="true">
+<!--UI interaction-->
+    <div id="page-home" data-role="page" data-add-back-btn="true">
 
         <!--Header-->
         <div data-role="header" data-position="fixed">
@@ -62,7 +56,7 @@
 
         <!--Content-->
         <div data-role="content">
-            <div id="login-wrap">
+            
                 <form data-ajax="false" id="login-form">
                     <h3 id="login-text">Enter your credentials:</h3>
                     <div>
@@ -72,38 +66,69 @@
 
                     <div class="buttons ui-bar">
                         <div>
-                            <div class="left">
-                                <input type="submit" id="login" data-icon="check" data-inline="true" class="left" value="Login" />
-                            </div>
-                            <div class="right">
-                                <button id="login-reset" data-icon="delete" data-inline="true" class="right">Reset</button>
-                            </div>
+                           <ul data-role="listview" id="bagTrackView" data-inset="true" data-theme="c">
+            					<li>
+            						<a data-transition="slide" href="#home">LogIn</a>
+            					</li>
+        					</ul>
                             <div class="clear"></div>
                         </div>
                     </div>
-                </form>
-            </div>
-
-            <div id="logout-wrap">
-                <div>
-                    <h1 class="welcome">Welcome, <span id="logout-username"></span>!
-                    </h1>
-                </div>
-
-                <div class="buttons">
-                    <div data-role="controlgroup" data-type="horizontal">
-                        <button id="logout" data-icon="back">Logout</button>
-                    </div>
-                </div>
-            </div>
+                </form>            
         </div>
 
         <!--Footer-->
         <div data-role="footer" data-position="fixed" data-id="oneFooter">
-            <span class="footerText">Built with Telerik AppBuilder&trade;</span>
+            <span class="footerText">© Kornitskiy A</span>
         </div>
 
     </div>
+    
+    
+    
+    
+    <!--Home-->
+    <div id="home" data-role="page" data-mini="true">
+			<div data-role="header"  data-position="fixed"  data-tap-toggle="false">
+                <h1>Couch surfing</h1>
+			</div>
+			<div class="info-wrapper">                
+                <div class="info-wrapper-right">
+                    <h3 class="ui-bar ui-bar-d ui-corner-all" data-theme='c' id='totalEventsss'>Total events:</h3>
+                    <br/>
+                    <h3 class="ui-bar ui-bar-d ui-corner-all" data-theme='a' id='totalhousesss'>Total houses:</h3>
+                </div>
+                <div class="clear"></div>
+            </div>
+           
+			<div data-role="content"> 
+				<ul data-role="listview" id="myTripsView" data-inset="true" data-theme="b">
+					<li>
+						<a data-transition="slide" id='downloadButton'>
+							Download data
+						</a>
+					</li>
+				</ul>
+				<ul data-role="listview" id="flightStatusView" data-inset="true" data-theme="d" style='visibility:collapse'>
+					<li>
+						<a data-transition="slide" href="#tabstrip-events" id="butonevents" >Show All events <span id="totalEventsss1"></span></a>  
+                    </li>
+				</ul>
+				<ul data-role="listview" id="bagTrackView1" data-inset="true" data-theme="d" style='visibility:collapse'>
+					<li>
+						<a data-transition="slide" href="#tabstrip-houses" id="buttonHouses">Show All houses <span id="totalhousesss1"></span></a>
+					</li>
+				</ul>
+			</div>
+        
+        <!--Footer-->
+        <div data-role="footer" data-position="fixed" data-id="oneFooter">
+            <a href="#page-location" data-transition="slide">Go to map</a>
+        </div>
+        
+		</div>
+    
+      
 
     <!--Location-->
     <div id="page-location" data-role="page" data-add-back-btn="true">
@@ -111,6 +136,7 @@
         <!--Header-->
         <div id="page-location-header" data-role="header" data-position="fixed">
             <h1>Location</h1>
+                <a data-role="button" href="#home" class="ui-btn-right">Home</a>
         </div>
 
         <!--Content-->
@@ -127,10 +153,197 @@
 
         <!--Footer-->
         <div id="page-location-footer" data-role="footer" data-position="fixed" data-id="oneFooter">
-            <span class="footerText">Built with Telerik AppBuilder&trade;</span>
+            <span class="footerText">© Kornitskiy A</span>
         </div>
 
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+         
+        
+     <!--Events-->
+    <div id="tabstrip-events"
+        data-role="view"
+        data-title="Events"> 
+         <div data-role="header" data-position="fixed"  data-tap-toggle="false">
+                <a data-role="button" href="#home" class="ui-btn-left">Back</a>
+				<h1>Events</h1>
+                <a data-role="button" href="#home" class="ui-btn-right">Home</a>
+			</div>
+        <div data-role="content" class="content">
+            
+                <div id="expensesShownList"></div>
+			<!--<ul data-role="listview" data-split-icon="gear" data-theme="d" data-divider-theme="d" id="expensesShownList" data-inset="true">
+			</ul>   -->
+        </div>
+        <!--Footer-->
+        <div id="page-location-footer" data-role="footer" data-position="fixed" data-id="oneFooter">
+            <span class="footerText">© Kornitskiy A</span>
+        </div>
+    </div>
+    
+ <!--Houses-->
+    <div id="tabstrip-houses"
+        data-role="view"
+        data-title="Houses">  <div data-role="header" data-position="fixed"  data-tap-toggle="false">
+                <a data-role="button" href="#home" class="ui-btn-left">Back</a>
+				<h1>Houses</h1>
+                <a data-role="button" href="#home" class="ui-btn-right">Home</a>
+			</div>
+        <div data-role="content" class="content">
+            <div id="houseList"></div>
+              <!-- <ul id="houseList"data-role="listview" data-split-icon="gear" data-theme="c" data-divider-theme="c" data-inset="true">
+                   
+               </ul>   -->   
+        </div>
+        <!--Footer-->
+        <div id="page-location-footer" data-role="footer" data-position="fixed" data-id="oneFooter">
+            <span class="footerText">© Kornitskiy A</span>
+        </div>
+    </div>
+
+    
+    
+        <div id="page-eventdetails"
+        data-role="view"
+        data-title="Event">  <div data-role="header" data-position="fixed"  data-tap-toggle="false">
+                <a data-role="button" href="#tabstrip-events" class="ui-btn-left">Back</a>
+				<h1>Event detail</h1>
+                <a data-role="button" href="#home" class="ui-btn-right">Home</a>
+			</div>
+       <div data-role="content" class="content-overflow">
+
+            
+			<form id="jForm" method="get">
+
+				<div id="contentPrimary" class="content-primary">
+					<br />
+                    <div id="vDb" class="dateboxField">
+						<label for="linked2">Name</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: Name" id="linked2"/>
+						<br />
+					</div>
+					<div id="jst" class="dateboxField">
+						<label for="linked2">DateStart</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: DateStart" id="linked2"/>
+						<br />
+					</div>
+
+					<div id="vDb" class="dateboxField">
+						<label for="linked2">DateEnd</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: DateEnd" id="linked2"/>
+						<br />
+					</div>
+                    
+                    <div id="vDb" class="dateboxField">
+						<label for="linked2">Country</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: Country" id="linked2"/>
+						<br />
+					</div>
+                     <div id="vDb" class="dateboxField">
+						<label for="linked2">City</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: City" id="linked2"/>
+						<br />
+					</div>
+                     <div id="vDb" class="dateboxField">
+						<label for="linked2">Description</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: Description" id="linked2"/>
+						<br />
+					</div>
+                     <div id="vDb" class="dateboxField">
+						<label for="linked2">Longitude</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: Longitude" id="linked2"/>
+						<br />
+					</div>
+                     <div id="vDb" class="dateboxField">
+						<label for="linked2">Latitude</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: Latitude" id="linked2"/>
+						<br />
+					</div>
+			
+                	<a href="#page-location" data-icon="search" onclick='changeviewtomap()'>Goto map</a>
+                    <input data-theme='d' id="SaveEvent" type="submit" value="SAVE" >
+				</div>
+			</form>
+		</div>
+        <!--Footer-->
+        <div id="page-location-footer" data-role="footer" data-position="fixed" data-id="oneFooter">
+            <span class="footerText">© Kornitskiy A</span>
+        </div>
+    </div>
+    
+    
+    
+        <div id="page-housedetails"
+        data-role="view"
+        data-title="Houses">  
+            <div data-role="header" data-position="fixed"  data-tap-toggle="false">
+                <a data-role="button" href="#tabstrip-houses" class="ui-btn-left">Back</a>
+				<h1>House detail</h1>
+                <a data-role="button" href="#home" class="ui-btn-right">Home</a>
+			</div>
+       <div data-role="content" class="content-overflow">
+
+            
+			<form id="jForm" method="get">
+
+				<div id="contentPrimary" class="content-primary">
+					<br />
+                    <div id="vDb" class="dateboxField">
+						<label for="linked2">ID</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: ID" id="linked2"/>
+						<br />
+					</div>
+					<div id="jst" class="dateboxField">
+						<label for="linked2">Address</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: Address" id="linked2"/>
+						<br />
+					</div>
+
+					<div id="vDb" class="dateboxField">
+						<label for="linked2">Rating</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: Rating" id="linked2"/>
+						<br />
+					</div>
+                    
+                    <div id="vDb" class="dateboxField">
+						<label for="linked2">UserMarks</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: UserMarks" id="linked2"/>
+						<br />
+					</div>
+                     <div id="vDb" class="dateboxField">
+						<label for="linked2">Comments</label>
+						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: Comments" id="linked2"/>
+						<br />
+					</div>			
+                    <input data-theme='d' id="SaveHouse" type="submit" value="SAVE" >
+				</div>
+			</form>
+		</div>
+        <!--Footer-->
+        <div id="page-location-footer" data-role="footer" data-position="fixed" data-id="oneFooter">
+            <span class="footerText">© Kornitskiy A</span>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <script type="text/javascript">
         document.addEventListener('deviceready', function () {
             navigator.splashscreen.hide();

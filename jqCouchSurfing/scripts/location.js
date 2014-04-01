@@ -11,7 +11,7 @@
         if (window.location.hash === "#page-location") {
             initLocation();
         } else {
-            $("#page-location").on("pageinit", initLocation);
+            $("#page-location").on("pageshow", initLocation);
         }
 
         //show loading mask in case the location not found yet 
@@ -53,10 +53,12 @@
 
         navigator.geolocation.getCurrentPosition(
             function (position) {
-                position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                position = new google.maps.LatLng(latitudeMY, longitudeMY);
                 map.panTo(position);
                 putMarker(position);
 
+    console.log(longitudeMY);
+    console.log(latitudeMY);
                 isLoading = false;
                 hidePage();
             }, function (error) {

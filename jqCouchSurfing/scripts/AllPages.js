@@ -7,6 +7,7 @@ $('#tabstrip-home').ready(function (e) {
     $('#downloadButton').click(function (e) {
         SyncExpensesNow();
  	   SyncHouses();   
+        
     });
     
     $('#butonevents').click(function (e) {

@@ -35,6 +35,69 @@ function gotoEvent(nnn){
 }
 
 
+function createnewevent(){
+    try {
+                chExpenseJS = jlinq.from(allEvents).first();
+            	console.log(chExpenseJS);
+        chExpenseJS.Name='New name';
+        
+        chExpenseJS.City= "";
+        chExpenseJS.Country= "";
+        chExpenseJS.DateEnd="2002-01-01T00:00:00";
+        chExpenseJS.DateStart="2001-01-01T00:00:00";
+        chExpenseJS.Description= "";
+        chExpenseJS.Latitude= 0;
+        chExpenseJS.Longitude= 0;
+        
+            if (chExpenseJS) {
+                
+                var cm = new childModel(chExpenseJS);
+				
+                
+                
+                
+                
+                chosenExpKO = ko.mapping.fromJS(chExpenseJS, cm);
+
+                ko.applyBindings(chosenExpKO, document.getElementById('page-eventdetails'));
+            }           
+            else {
+                alert("Event not found");
+            }
+	}
+    catch (e) {
+        alert("19004a:" + e);
+		}
+}
+
+
+
+function createnewhouse(){
+    try {
+               var chExpenseJS11 = jlinq.from(allHouses).first();
+            console.log(chExpenseJS11);
+        
+        chExpenseJS11.Address= ""; 
+        chExpenseJS11.Rating= 0;
+		chExpenseJS11.UserMarks= null; 
+        chExpenseJS11.Comments= null; 
+        chExpenseJS11.ID= 0;
+        
+            if (chExpenseJS11) {
+                var cm = new childModel(chExpenseJS11);
+
+               var chosenExpKO11 = ko.mapping.fromJS(chExpenseJS11, cm);
+
+                ko.applyBindings(chosenExpKO11, document.getElementById('page-housedetails'));
+            }           
+            else {
+                alert("House not found");
+            }
+    }
+    catch (e) {
+        alert("19004a:" + e);
+		}
+}
 
 function gotoHouse(nnn){
      console.log('click');

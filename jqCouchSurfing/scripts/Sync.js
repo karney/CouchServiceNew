@@ -80,9 +80,11 @@ function processHousesData(data) {
         
         
         $("#bagTrackView1").attr("style", "visibility: visible");
+        $("#bagTrackView111").attr("style", "visibility: visible");
         
         
 		console.log($("#totalhousesss").html());
+        createListHouses();
     }
     catch(e){
          console.log(e.message);
@@ -103,8 +105,10 @@ console.log(allEvents);
         $("#totalEventsss1").html(countEvents);
         
         $("#flightStatusView").attr("style", "visibility: visible");
-        
+        $("#flightStatusView11").attr("style", "visibility: visible");
+       
 		console.log($("#totalEventsss").html());
+        createListEvents();
     }
     catch(e){
          console.log(e.message);

@@ -26,15 +26,42 @@ function SyncHouses() {
     
 } 
 
+function getusrs() {
+    
+    $.ajax({
+            url: url + "GetUsers",
+            type: 'GET',
+            dataType: 'text',
+            success : function(text){processUsers(text);},
+            error:processError
+    });
+    
+} 
+
+
+function savehousenow(){
+    $.mobile.changePage($('#home'));
+    currentHouseMY=ko.mapping.toJS(chosenExpKO11);
+    SaveHouses(currentHouseMY);
+}
+
+function saveeventsnow(){
+    
+    $.mobile.changePage($('#home'));
+currentEventMY=ko.mapping.toJS(chosenExpKO);    
+ SaveEvents(currentEventMY);
+}
+
+
 function SaveHouses(curhouse) {
     console.log('save houses');
  
-    
+    var st=JSON.stringify(curhouse);
+    console.log(st);
     $.ajax({
-            url: url + "SetHouses?ID="+curhouse.ID+"&a="+curhouse.Address+"&r="+curhouse.Rating+"&u"+curhouse.UserMarks+"&c="+curhouse.Comments,
+            url: url + "SaveHouses?ss="+st,
             type: 'GET',
             dataType: 'text',
-            success : function(text){processHousesData(text);},
             error:processError
     });
     
@@ -44,11 +71,11 @@ function SaveEvents(curEvent) {
     console.log('sadadas');
  
     
+    var st=JSON.stringify(curEvent);
     $.ajax({
-            url: url + "SetEven?n"+curEvent.Name+"&c="+curEvent.Country+"&ci="+curEvent.City+"&d="+curEvent.Description,
+            url: url + "SetEven?ss="+st,
             type: 'GET',
             dataType: 'text',
-            success : function(text){processExpensesData(text);},
             error:processError
     });
     
@@ -114,3 +141,47 @@ console.log(allEvents);
          console.log(e.message);
     }
 }
+
+
+
+
+
+
+function processUsers(data) {
+    try{
+        var dd = data.substr(68);
+        var dod=dd.substring(0,dd.indexOf("</string>"));
+        var jsData = $.parseJSON(dod);
+        
+        var allusrss=jsData;
+		console.log(allusrss);
+        var nowusr = jlinq.from(allusrss).equals("name", $('#login-username').val()).first();
+        
+        if(nowusr.pass===$('#login-password').val()){
+        $('#login-username').css({'background-color' : '#f9f9f9'}); 
+        $('#login-password').css({'background-color' : '#f9f9f9'}); 
+	    $.mobile.changePage($('#home'));
+        }else{
+            $('#login-password').css({'background-color' : '#FF99FF'});
+            $('#login-username').css({'background-color' : '#FF99FF'});
+        }
+		        
+    }
+    catch(e){
+         console.log(e.message);
+    }
+}
+
+
+
+
+
+
+
+function checklogin(){
+  
+    getusrs();
+    
+}
+
+

@@ -75,7 +75,7 @@ background-image: linear-gradient(to left top, #96CEED 0%, #112E75 100%);
                         <div>
                            <ul data-role="listview" id="bagTrackView" data-inset="true" data-theme="c">
             					<li>
-            						<a data-transition="slide" href="#home">LogIn</a>
+            						<a data-transition="slide" onclick='checklogin()'>LogIn</a>
             					</li>
         					</ul>
                             <div class="clear"></div>
@@ -103,7 +103,7 @@ background-image: linear-gradient(to left top, #96CEED 0%, #112E75 100%);
         <div  >
 			<div class="info-wrapper">                
                 <div class="info-wrapper-right">
-                    <h3 class="ui-bar ui-bar-b ui-corner-all" data-theme='c' id='totalEventsss'>Total events:</h3>
+                    <br/><h3 class="ui-bar ui-bar-b ui-corner-all" data-theme='c' id='totalEventsss'>Total events:</h3>
                     <br/>
                     <h3 class="ui-bar ui-bar-b ui-corner-all" data-theme='a' id='totalhousesss'>Total houses:</h3>
                 </div>
@@ -289,7 +289,7 @@ background-image: linear-gradient(to left top, #96CEED 0%, #112E75 100%);
 					</div>
 			
                 	<a href="#page-location" data-icon="search" onclick='changeviewtomap()'>Goto map</a>
-                    <input data-theme='d' id="SaveEvent" type="submit" value="SAVE" >
+                    <input data-theme='d' id="SaveEvent" value="SAVE" onclick='saveeventsnow()'>
 				</div>
 			</form>
 		</div>
@@ -343,7 +343,7 @@ background-image: linear-gradient(to left top, #96CEED 0%, #112E75 100%);
 						<input class="smallSpacer ui-input-text ui-body-c" name="linked2" type="text" data-bind="value: Comments" id="linked2"/>
 						<br />
 					</div>			
-                    <input data-theme='d' id="SaveHouse" type="submit" value="SAVE" >
+                    <input data-theme='d' value="SAVE" onclick='savehousenow()'>
 				</div>
 			</form>
 		</div>
